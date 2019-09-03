@@ -1,0 +1,38 @@
+<button (click)="onClickMe()">Click me!</button><br /><br />
+{{ clickMessage }} <br /><br />
+
+<input (keyup)="onKey($event)" /> <br /><br />
+<p>{{ values }}</p> <br /><br />
+
+<h4> type the $event </h4>
+<input (keyup)="onKey1($event)" /> <br /><br />
+<p>{{ values1 }}</p> <br /><br />
+
+<h4> Get user input from a template reference variable </h4>
+<input #box (keyup)="0">
+<p>{{box.value}}</p> <br /><br />
+
+<input #box1 (keyup)="onKey2(box1.value)">
+<p>{{values2}}</p> <br /><br />
+
+<h4> Key event filtering (with key.enter) </h4>
+<input #box2 (keyup.enter)="onEnter(box2.value)">
+<p>{{values3}}</p>
+
+<h4> On blur </h4>
+<input #box3
+      (keyup.enter)="update(box3.value)"
+      (blur)="update(box3.value)">
+<p>{{values4}}</p>
+
+<h4> List of Heroes </h4>
+<input #newHero
+      (keyup.enter)="addHero(newHero.value)"
+      (blur)="addHero(newHero.value)">
+
+<button (click)="addHero(newHero.value)">Add</button>
+
+<ul>
+  <li *ngFor="let hero of heroes">{{hero}}</li>
+</ul>
+
